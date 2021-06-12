@@ -1,13 +1,20 @@
 const app=require("express");
-const customer = app.Router();
+const shop = app.Router();
 
-customer.get("/customer",(req,res,next)=>{
-    const msg="Customer Route it is";
-    res.send(msg);
-    next();
+//New Shop Register Request
+    shop.post('/shopsignin',(req,res,next)=>{
+
+        const newShop = new customerSchema({
+                name : req.body.name,
+                address: req.body.address,
+                phonenumber: req.body.phonenumber,
+                username: req.body.username,
+                password:req.body.password
+        });
+        console.log(req.body); 
+        console.log(newShop);
+        res.status(200).send(newShop);
+        next();
 });
 
-
-
-
-module.exports=customer;
+module.exports=shop;
