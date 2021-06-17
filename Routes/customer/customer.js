@@ -30,23 +30,22 @@ customer.post('/customersignin',(req,res,next)=>{
 //login
 
 //will request a get request password willbe fetched via get request to ui and then by comparing password we will allow to login or logout
-// customer.get("/customerlogin/:userid",(req,res,next)=>{
+customer.get("/customerlogin/:userid",(req,res,next)=>{
 
-//     customerSchema.find({"username":userid}).then(result =>{
-//             console.log(result.password);
-//     res.status(200).send(result.password);        
-//     });       
-//    next();
-// });
+    customerSchema.find({"username":userid}).then(result =>{
+            console.log(result.password);
+    res.status(200).send(result.password);        
+    });       
+   next();
+});
 
 
 
 // Fetch All customer data for testing
-
 customer.get("/allcustomer",(req,res,next)=>{
 
     // var allcustomer= new customerSchema();
-    customerSchema.find({}).then(result =>{
+    customerSchema.find({}).then( result =>{
         console.log(result);
         res.status(200).send(result); next();
     }).catch((err)=>{console.log(err)});
