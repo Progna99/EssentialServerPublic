@@ -19,7 +19,7 @@ const shopSchema= require("../../dbmodel/shop");
         next();
 });
 
-customer.get("/shoplogin/:userid",(req,res,next)=>{
+shop.get("/shoplogin/:userid",(req,res,next)=>{
 
         shopSchema.find({"username":userid}).then(result =>{
                 console.log(result.password);
@@ -29,7 +29,7 @@ customer.get("/shoplogin/:userid",(req,res,next)=>{
     });
     
     // Fetch All shop data for testing
-    customer.get("/allshop",(req,res,next)=>{
+    shop.get("/allshop",(req,res,next)=>{
         shopSchema.find({}).then( result =>{
             console.log(result);
             res.status(200).send(result); next();
