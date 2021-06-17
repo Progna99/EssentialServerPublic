@@ -36,7 +36,7 @@ customer.get("/customerlogin/:userid",(req,res,next)=>{
             console.log(result.password);
     res.status(200).send(result.password);        
     });       
-   next();
+    next();
 });
 
 
