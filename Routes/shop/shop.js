@@ -20,12 +20,10 @@ const shopSchema= require("../../dbmodel/shop");
 });
 
 shop.get("/shoplogin/:userid",(req,res,next)=>{
-        var userid=req.params.userid;
-        shopSchema.find({"username":userid}).then(result =>{
-                console.log(result.password);
-        res.status(200).send(result.password);        
-        });       
-        next();
+        var id=req.params.userid;
+        shopSchema.find({"username":id}).then(result =>{
+                console.log(result[0].password);
+                res.status(200).send(result[0].password); 
     });
     
     // Fetch All shop data for testing
