@@ -25,7 +25,7 @@ shop.get("/shoplogin/:userid",(req,res,next)=>{
                 console.log(result[0].password);
                 res.status(200).send(result[0].password); 
     });
-    
+});
     // Fetch All shop data for testing
     shop.get("/allshop",(req,res,next)=>{
         shopSchema.find({}).then( result =>{
