@@ -31,7 +31,7 @@ customer.post('/customersignin',(req,res,next)=>{
 
 //will request a get request password willbe fetched via get request to ui and then by comparing password we will allow to login or logout
 customer.get("/customerlogin/:userid",(req,res,next)=>{
-
+    var userid=req.params.userid;
     customerSchema.find({"username":userid}).then(result =>{
             console.log(result.password);
     res.status(200).send(result.password);        

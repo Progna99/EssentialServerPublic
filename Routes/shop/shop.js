@@ -20,7 +20,7 @@ const shopSchema= require("../../dbmodel/shop");
 });
 
 shop.get("/shoplogin/:userid",(req,res,next)=>{
-
+        var userid=req.params.userid;
         shopSchema.find({"username":userid}).then(result =>{
                 console.log(result.password);
         res.status(200).send(result.password);        
