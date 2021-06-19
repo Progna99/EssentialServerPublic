@@ -22,8 +22,8 @@ shop.get("/shoplogin/:userid",(req,res,next)=>{
         var id=req.params.userid;
         shopSchema.find({"username":id}).then(result =>{
              //   console.log((result[0].password).toString());
-                  console.log(result[0]);
-                res.status(200).send(result[0]); 
+                  console.log(result[0].password);
+                res.status(200).send(result[0].password); 
                 next();
     });
 });
