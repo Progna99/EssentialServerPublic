@@ -15,7 +15,7 @@ const shopSchema= require("../../dbmodel/shop");
         });
         console.log(req.body); 
         console.log(newShop);
-        res.status(200).send(newShop);
+        newShop.save().then(res.status(200).json({status:'Successfully Saved'})).catch();
         next();
 });
 
