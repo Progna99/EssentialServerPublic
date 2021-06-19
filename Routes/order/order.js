@@ -20,8 +20,7 @@ const shopSchema=require('../../dbmodel/shop');
             next();
         }).catch(err=>{console.log(err)});
   });
-
-    // Order display for approval or just show orders
+    // Order display for approval or just show orders for specific shop
     order.get("/approval/:shopmail",(req,res,next)=>{
         var shopid=req.params.shopmail;
         shopSchema.find({"username":shopid}).then( firstresult =>{
@@ -32,6 +31,13 @@ const shopSchema=require('../../dbmodel/shop');
                  next();
             });         
         });    
+    });
+    order.get("/allorder",(req,res,next)=>{
+        orderSchema.find({}).then((result)=>{
+             console.log(result[0]);
+             res.status(200).send(result[0]);
+             next();
+        });         
     });
 
 module.exports = order;
