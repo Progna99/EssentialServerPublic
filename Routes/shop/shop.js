@@ -23,7 +23,7 @@ shop.get("/shoplogin/:userid",(req,res,next)=>{
         shopSchema.find({"username":id}).then(result =>{
              //   console.log((result[0].password).toString());
                   console.log(result[0]);
-                res.status(200).send(result[0]); 
+                res.status(200).json({password:result[0].password}); 
                 next();
     });
 });
