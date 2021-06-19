@@ -4,6 +4,7 @@ const mongoose=require("mongoose");
 app.use(express.json());
 const shopRoutes = require("./Routes/shop/shop");
 const customerRoutes = require("./Routes/customer/customer");
+const orderRoutes= require("./Routes/order/order");
 var port = process.env.PORT || 8080;
 //mongoDB PASS  PrognaSU nMo0Rgt1G7sC5UWM
 app.listen(port,()=>{
@@ -13,7 +14,7 @@ mongoose.connect('mongodb+srv://PrognaSU:nMo0Rgt1G7sC5UWM@cluster0.bzjvh.mongodb
 
 app.use("/api",shopRoutes);
 app.use("/api",customerRoutes);
-
+app.use("/api",orderRoutes);
 
 
 
