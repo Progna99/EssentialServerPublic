@@ -23,7 +23,10 @@ customer.post('/customersignin',(req,res,next)=>{
     console.log(newCustomer);
    //  res.send("Success");
   //  res.send(newCustomer);
-    newCustomer.save().then(res.status(200).json({status:'Successfully Saved'})).catch();
+    newCustomer.save().then( ()=> {
+        res.status(200).json({status:'Successfully Saved'});
+        next();
+    }).catch();
 });
 
 
@@ -34,7 +37,7 @@ customer.get("/customerlogin/:userid",(req,res,next)=>{
     var id=req.params.userid;
     customerSchema.find({"username":id}).then(result =>{
             console.log(result[0].password);
-    res.status(200).send(result[0].password);        
+    res.status(200).send(result[0].password); next() ;      
     });       
 });
 

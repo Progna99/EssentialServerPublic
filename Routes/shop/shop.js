@@ -15,8 +15,7 @@ const shopSchema= require("../../dbmodel/shop");
         });
         console.log(req.body); 
         console.log(newShop);
-        newShop.save().then(res.status(200).json({status:'Successfully Saved'})).catch();
-        next();
+        newShop.save().then(()=> {res.status(200).json({status:'Successfully Saved'});next();}).catch();
 });
 
 shop.get("/shoplogin/:userid",(req,res,next)=>{
