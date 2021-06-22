@@ -34,6 +34,12 @@ shop.get("/shoplogin/:userid",(req,res,next)=>{
             res.status(200).send(result); next();
         }).catch((err)=>{console.log(err)});
     });
-
+    
+    
+    shop.get("/removeshops",(req,res,next)=>{
+        shopSchema.remove({}).then(result=>{
+            res.status(200).send("shops Deleted"); next();
+        }).catch((err)=>{console.log(err)});
+    });
 
 module.exports=shop;

@@ -45,11 +45,17 @@ customer.get("/customerlogin/:userid",(req,res,next)=>{
 
 // Fetch All customer data for testing
 customer.get("/allcustomer",(req,res,next)=>{
-
     // var allcustomer= new customerSchema();
     customerSchema.find({}).then( result =>{
         console.log(result);
         res.status(200).send(result); next();
+    }).catch((err)=>{console.log(err)});
+});
+
+//Remove all the customers from table
+customer.get("/removecustomer",(req,res,next)=>{
+    customerSchema.remove({}).then(result=>{
+        res.status(200).send("Customers Deleted"); next();
     }).catch((err)=>{console.log(err)});
 });
 
