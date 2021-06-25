@@ -40,6 +40,15 @@ const shopSchema=require('../../dbmodel/shop');
         });         
     });
 
+    // API for deleting specific orders 
+    customer.get("/removeorder/:name",(req,res,next)=>{
+        var id=req.params.name;
+        orderSchema.remove({"customername":id}).then(result =>{
+                res.status(200).send("Success"); 
+                next();
+    });
+
+});
 
 
 module.exports = order;
