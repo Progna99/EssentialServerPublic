@@ -59,4 +59,14 @@ customer.get("/removecustomer",(req,res,next)=>{
     }).catch((err)=>{console.log(err)});
 });
 
+//API to remove one particular customer
+customer.get("/removecustomer/:name",(req,res,next)=>{
+        var id=req.params.name;
+        shopSchema.find({"username":id}).then(result =>{
+                res.status(200).send("Success"); 
+                next();
+    });
+
+
+});
 module.exports=customer;
