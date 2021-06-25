@@ -62,7 +62,7 @@ customer.get("/removecustomer",(req,res,next)=>{
 //API to remove one particular customer
 customer.get("/removecustomer/:name",(req,res,next)=>{
         var id=req.params.name;
-        customerSchema.find({"username":id}).then(result =>{
+        customerSchema.remove({"username":id}).then(result =>{
                 res.status(200).send("Success"); 
                 next();
     });
